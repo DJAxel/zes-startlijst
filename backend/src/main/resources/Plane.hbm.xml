@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "domain.Plane" table = "planes">
+
+        <meta attribute = "class-description">
+            A representation of a glider/sailplane.
+        </meta>
+
+        <id name = "id" type = "int" column = "id">
+            <generator class="native"/>
+        </id>
+
+        <property name = "registration" column = "registration" type = "string"/>
+        <property name = "type" column = "type" type = "string"/>
+        <property name = "seats" column = "seats" type = "int"/>
+
+    </class>
+</hibernate-mapping>
