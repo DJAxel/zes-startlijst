@@ -26,8 +26,26 @@ public class PilotJpaContext implements IPilotContext {
     }
 
     public ArrayList<Pilot> getAll() {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ArrayList<Pilot> pilots = null;
 
-        return null;
+        try {
+            tx = session.beginTransaction();
+            pilots = (ArrayList<Pilot>) session.createQuery("FROM Pilot").list();
+            for (Iterator iterator = pilots.iterator(); iterator.hasNext();){
+                Pilot pilot = (Pilot) iterator.next();
+                System.out.print("Name: " + pilot.getName());
+                System.out.print("  Status: " + pilot.getStatus());
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return pilots;
     }
 
 }
