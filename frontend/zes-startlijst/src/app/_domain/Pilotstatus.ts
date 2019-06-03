@@ -1,4 +1,4 @@
-enum Pilotstatus {
+export enum Pilotstatus {
 	DBO,
 	Solist,
 	GPL,

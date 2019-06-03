@@ -1,4 +1,4 @@
-enum Startmethod {
+export enum Startmethod {
 	L,
 	S,
 	Z

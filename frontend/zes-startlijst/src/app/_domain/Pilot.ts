@@ -1,6 +1,6 @@
-import { Pilotstatus } from './';
+import { Pilotstatus } from './pilotstatus';
 
-class Pilot {
+export class Pilot {
 	name: string;
 	status: Pilotstatus;
 

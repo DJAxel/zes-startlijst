@@ -1,0 +1,28 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>No.</th>
+			<th>Vliegtuig</th>
+			<th>piloot</th>
+			<th>tweede inzittende</th>
+			<th>starttijd</th>
+			<th>eindtijd</th>
+			<th>Duur</th>
+			<th>meth.</th>
+			<th>Opmerkingen</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let flight of flights; let i = index">
+			<td>{{ i+1 }}</td>
+			<td>{{ flight.plane.registration }}</td>
+			<td>{{ flight.pilot.name }}</td>
+			<td>{{ flight.second_pilot ? flight.second_pilot.name : "" }}</td>
+			<td>{{ flight.starttime | date:"HH:mm" }}</td>
+			<td>{{ flight.landtime | date:"HH:mm" }}</td>
+			<td></td>
+			<td>{{ flight.startmethode }}</td>
+			<td>{{ flight.remarks }}</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,4 +1,4 @@
-class Plane {
+export class Plane {
 	registration: string;
 	type: string;
 	seats: number;
