@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "zes-startlijst"
+  "defaultProject": "zes-startlijst",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
