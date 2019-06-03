@@ -65,8 +65,6 @@ export class StartlistComponent implements OnInit {
         ""
       )
     );
-
-    console.log(this.flights);
   }
 
 }
