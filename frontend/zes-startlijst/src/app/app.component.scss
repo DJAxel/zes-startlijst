@@ -1,0 +1,14 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+
+	#header {
+
+	}
+
+	#content {
+		flex-grow: 1;
+		overflow-y: auto;
+	}
+}

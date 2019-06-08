@@ -1,0 +1,12 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+	--primary-color: #D11D27;
+	--secondary-color: #A90011;
+	--white: #FFFFFF;
+}
+
+body {
+	font-family: arial, sans-serif;
+	margin: 0;
+}
