@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Flight } from '../_domain/Flight';
-import { Plane } from '../_domain/Plane';
-import { Pilot } from '../_domain/Pilot';
-import { Pilotstatus } from '../_domain/Pilotstatus';
-import { Startmethod } from '../_domain/Startmethod';
+import { Flight } from '../_domain/flight';
+import { Plane } from '../_domain/plane';
+import { Pilot } from '../_domain/pilot';
+import { Pilotstatus } from '../_domain/pilotstatus';
+import { Startmethod } from '../_domain/startmethod';
 
 import { Observable, of } from 'rxjs';
 

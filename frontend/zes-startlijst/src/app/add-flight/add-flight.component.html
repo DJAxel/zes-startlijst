@@ -1,3 +1,66 @@
-<p>
-  add-flight works!
-</p>
+<a routerLink="/" class="close-btn">
+  &times;
+</a>
+
+<div class="container">
+  <h2>Nieuwe vlucht</h2>
+
+  <div>
+    <div class="form-group">
+      <label for="plane">Vliegtuig</label>
+      <ng-select
+        [items]="planes"
+        bindLabel="registration"
+        [(ngModel)]="selectedPlane"></ng-select>
+    </div>
+
+    <div class="form-group">
+      <label for="pilot">Piloot</label>
+      <select class="form-control" id="pilot">
+        <option></option>
+        <option>Axel Köhler</option>
+        <option>Midas Pranger</option>
+        <option>Allard Poldermans</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="second_pilot">Tweede inzittende</label>
+      <select class="form-control" id="second_pilot">
+        <option></option>
+        <option>Axel Köhler</option>
+        <option>Midas Pranger</option>
+        <option>Allard Poldermans</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="starttime">Starttijd</label>
+      <input [(ngModel)]="starttimeValue" type="text" name="starttime" class="form-control" placeholder="hh:mm">
+    </div>
+
+    <p>Value: {{starttimeValue}}</p>
+
+    <div class="form-group">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="startmethodWinch" name="startmethod" class="custom-control-input">
+        <label class="custom-control-label" for="startmethodWinch">Lier</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="startmethodTow" name="startmethod" class="custom-control-input">
+        <label class="custom-control-label" for="startmethodTow">Sleep</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="startmethodSelf" name="startmethod" class="custom-control-input">
+        <label class="custom-control-label" for="startmethodSelf">Zelfstart</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="starttime">Opmerkingen</label>
+      <input type="text" class="form-control" id="remarks">
+    </div>
+
+    <button class="btn btn-primary">Opslaan</button>
+  </div>
+</div>
