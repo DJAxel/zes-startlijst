@@ -4,6 +4,7 @@ import { Pilot } from '../_domain/pilot';
 import { Startmethod } from '../_domain/startmethod';
 
 import { PlaneService } from '../_services/plane.service';
+import { PilotService } from '../_services/pilot.service';
 
 @Component({
   selector: 'app-add-flight',
@@ -18,17 +19,22 @@ export class AddFlightComponent implements OnInit {
   starttimeValue: string;
   startmethod: Startmethod;
   remarks: string;
-  selectedPlane: any;
 
   planes: Plane[];
+  pilots: Pilot[];
 
-  constructor(private planeService: PlaneService) { }
+  constructor(private planeService: PlaneService, private pilotService: PilotService) { }
 
   ngOnInit() {
     this.getAllPlanes();
+    this.getAllPilots();
   }
 
   getAllPlanes() {
-    this.planeService.getAll().subscribe(p => this.planes = p;));
+    this.planeService.getAll().subscribe(p => this.planes = p));
+  }
+
+  getAllPilots() {
+    this.pilotService.getAll().subscribe(p => this.pilots = p));
   }
 }

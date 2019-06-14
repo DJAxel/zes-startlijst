@@ -11,27 +11,23 @@
       <ng-select
         [items]="planes"
         bindLabel="registration"
-        [(ngModel)]="selectedPlane"></ng-select>
+        [(ngModel)]="plane"></ng-select>
     </div>
 
     <div class="form-group">
       <label for="pilot">Piloot</label>
-      <select class="form-control" id="pilot">
-        <option></option>
-        <option>Axel Köhler</option>
-        <option>Midas Pranger</option>
-        <option>Allard Poldermans</option>
-      </select>
+      <ng-select
+        [items]="pilots"
+        bindLabel="name"
+        [(ngModel)]="pilot"></ng-select>
     </div>
 
     <div class="form-group">
       <label for="second_pilot">Tweede inzittende</label>
-      <select class="form-control" id="second_pilot">
-        <option></option>
-        <option>Axel Köhler</option>
-        <option>Midas Pranger</option>
-        <option>Allard Poldermans</option>
-      </select>
+      <ng-select
+        [items]="pilots"
+        bindLabel="name"
+        [(ngModel)]="second_pilot"></ng-select>
     </div>
 
     <div class="form-group">
