@@ -32,10 +32,11 @@
 
     <div class="form-group">
       <label for="starttime">Starttijd</label>
-      <input [(ngModel)]="starttimeValue" type="text" name="starttime" class="form-control" placeholder="hh:mm">
+      <div class="d-flex">
+        <input [(ngModel)]="starttimeValue" type="text" name="starttime" class="form-control" placeholder="hh:mm" style="flex-grow: 1;">
+        <span class="btn btn-secondary ml-2" (click)="setStarttimeNow()">NU</span>
+      </div>
     </div>
-
-    <p>Value: {{starttimeValue}}</p>
 
     <div class="form-group">
       <div class="custom-control custom-radio custom-control-inline">

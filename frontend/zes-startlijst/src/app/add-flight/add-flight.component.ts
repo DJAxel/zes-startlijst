@@ -37,4 +37,12 @@ export class AddFlightComponent implements OnInit {
   getAllPilots() {
     this.pilotService.getAll().subscribe(p => this.pilots = p));
   }
+
+  setStarttimeNow() {
+    var now = new Date();
+    var string = now.getHours() < 10 ? "0" + now.getHours() : now.getHours();
+    string += ":";
+    string += now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
+    this.starttimeValue = string;
+  }
 }
