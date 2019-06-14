@@ -40,15 +40,15 @@
 
     <div class="form-group">
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="startmethodWinch" name="startmethod" class="custom-control-input">
+        <input type="radio" id="startmethodWinch" name="startmethod" class="custom-control-input" [(ngModel)]="startmethod" [checked]="startmethod==0" [value]="0">
         <label class="custom-control-label" for="startmethodWinch">Lier</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="startmethodTow" name="startmethod" class="custom-control-input">
+        <input type="radio" id="startmethodTow" name="startmethod" class="custom-control-input" [(ngModel)]="startmethod" [checked]="startmethod==1" [value]="1">
         <label class="custom-control-label" for="startmethodTow">Sleep</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="startmethodSelf" name="startmethod" class="custom-control-input">
+        <input type="radio" id="startmethodSelf" name="startmethod" class="custom-control-input" [(ngModel)]="startmethod" [checked]="startmethod==2" [value]="2">
         <label class="custom-control-label" for="startmethodSelf">Zelfstart</label>
       </div>
     </div>

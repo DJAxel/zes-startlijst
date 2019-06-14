@@ -17,7 +17,7 @@ export class AddFlightComponent implements OnInit {
   pilot: Pilot;
   second_pilot: Pilot;
   starttimeValue: string;
-  startmethod: Startmethod;
+  startmethod: Startmethod = Startmethod.L;
   remarks: string;
 
   planes: Plane[];
