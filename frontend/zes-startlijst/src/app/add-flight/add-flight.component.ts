@@ -6,6 +6,7 @@ import { Flight } from '../_domain/flight';
 
 import { PlaneService } from '../_services/plane.service';
 import { PilotService } from '../_services/pilot.service';
+import { SettingsService } from '../_services/settings.service';
 
 @Component({
   selector: 'app-add-flight',
@@ -24,7 +25,11 @@ export class AddFlightComponent implements OnInit {
   planes: Plane[];
   pilots: Pilot[];
 
-  constructor(private planeService: PlaneService, private pilotService: PilotService) { }
+  constructor(
+    private planeService: PlaneService,
+    private pilotService: PilotService,
+    private settingsService: SettingsService
+  ) { }
 
   ngOnInit() {
     this.getAllPlanes();
@@ -66,16 +71,13 @@ export class AddFlightComponent implements OnInit {
   }
 
   addFlight() {
-    let starttime = new Date();
-    starttime.setHours();
-    let airfield = "EHDP";
     let flight: Flight = new Flight(
       this.plane,
       this.pilot,
       this.second_pilot,
       this.getTimeFromString(this.starttimeValue),
       null,
-      airfield,
+      this.settingsService.getAirfield(),
       this.startmethod,
       this.remarks
     );
