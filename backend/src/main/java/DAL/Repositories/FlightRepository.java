@@ -18,4 +18,9 @@ public class FlightRepository implements IFlightRepository {
     public ArrayList<Flight> getAll() {
         return context.getAll();
     }
+
+    @Override
+    public Flight add(Flight flight) {
+        return this.context.add(flight);
+    }
 }

@@ -7,6 +7,8 @@ import { Flight } from '../_domain/flight';
 import { PlaneService } from '../_services/plane.service';
 import { PilotService } from '../_services/pilot.service';
 import { SettingsService } from '../_services/settings.service';
+import { FlightService } from '../_services/flight.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-flight',
@@ -25,10 +27,14 @@ export class AddFlightComponent implements OnInit {
   planes: Plane[];
   pilots: Pilot[];
 
+  flight: Flight;
+
   constructor(
     private planeService: PlaneService,
     private pilotService: PilotService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private flightService: FlightService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -92,6 +98,7 @@ export class AddFlightComponent implements OnInit {
       remarks: this.remarks
     });
 
-    console.dir( flight );
+    console.log( this.flightService.add( flight ).subscribe(f => this.flight = f) );
+    this.router.navigate(['/']);
   }
 }

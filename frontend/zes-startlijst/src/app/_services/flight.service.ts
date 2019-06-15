@@ -7,7 +7,7 @@ import { Startmethod } from '../_domain/startmethod';
 
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,20 @@ export class FlightService {
       map(
         (flights: Flight[]) => flights.map(flight => new Flight(flight))
       )
+    );
+  }
+
+  add(flight: Flight): Observable<Flight> {
+    console.log("POSTing flight!");
+    const httpHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        // 'Authorization': 'my-auth-token'
+      })
+    };
+    console.log(httpHeaders);
+    return this.http.post<Flight>('/api/flights/', flight, httpHeaders).pipe(
+      catchError(err => console.dir(err))
     );
   }
 

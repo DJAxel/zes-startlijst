@@ -3,9 +3,7 @@ package endpoint;
 import DAL_interfaces.Repositories.IFlightRepository;
 import Factory.FlightFactory;
 import domain.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -21,5 +19,11 @@ public class FlightsController {
     @GetMapping("/")
     public ArrayList<Flight> getAll() {
         return repository.getAll();
+    }
+
+    @PostMapping("/")
+    public Flight add(@RequestBody Flight flight) {
+        System.out.println(flight);
+        return this.repository.add(flight);
     }
 }

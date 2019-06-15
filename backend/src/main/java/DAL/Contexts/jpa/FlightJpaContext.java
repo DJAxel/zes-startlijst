@@ -50,4 +50,20 @@ public class FlightJpaContext implements IFlightContext {
 
         return flights;
     }
+
+    @Override
+    public Flight add(Flight flight) {
+        try {
+            Session session = factory.openSession();
+            session.beginTransaction();
+            session.persist(flight);
+            session.getTransaction().commit();
+            session.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return flight;
+    }
 }
