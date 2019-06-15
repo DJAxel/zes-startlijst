@@ -37,18 +37,18 @@ export class AddFlightComponent implements OnInit {
   }
 
   getAllPlanes() {
-    this.planeService.getAll().subscribe(p => this.planes = p));
+    this.planeService.getAll().subscribe(p => this.planes = p);
   }
 
   getAllPilots() {
-    this.pilotService.getAll().subscribe(p => this.pilots = p));
+    this.pilotService.getAll().subscribe(p => this.pilots = p);
   }
 
   setStarttimeNow() {
     var now = new Date();
-    var string = now.getHours() < 10 ? "0" + now.getHours() : now.getHours();
+    var string = now.getHours() < 10 ? "0" + now.getHours() : String(now.getHours());
     string += ":";
-    string += now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
+    string += now.getMinutes() < 10 ? "0" + now.getMinutes() : String(now.getMinutes());
     this.starttimeValue = string;
   }
 
@@ -72,8 +72,8 @@ export class AddFlightComponent implements OnInit {
       var h = timeString.substring(colonPos-2, colonPos);
       var m = timeString.substring(colonPos+1, colonPos+3);
       var d = new Date();
-      d.setHours(h);
-      d.setMinutes(m);
+      d.setHours( parseInt(h) );
+      d.setMinutes( parseInt(m) );
       d.setSeconds(0);
       return d;
     }
