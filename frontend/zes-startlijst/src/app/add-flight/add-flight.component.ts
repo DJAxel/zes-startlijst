@@ -52,6 +52,16 @@ export class AddFlightComponent implements OnInit {
     this.starttimeValue = string;
   }
 
+  isDoubleseaterSelected(): boolean {
+    return this.plane != null && this.plane.seats == 2;
+  }
+
+  isEverythingFilledIn(): boolean {
+    return this.plane != null
+    && this.pilot != null
+    && this.isValidTimestring( this.starttimeValue );
+  }
+
   isValidTimestring(timeString: string) {
     return timeString.trim().match(/^\d\d:\d\d.*/) != null;
   }
