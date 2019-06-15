@@ -1,22 +1,20 @@
 package domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import java.util.Date;
+import java.time.Instant;
 
 public class Flight {
     private int id;
     private Plane plane;
     private Pilot pilot;
     private Pilot second_pilot;
-    private Date starttime;
-    private Date landtime;
+    private Instant starttime;
+    private Instant landtime;
     private String airfield;
     private Startmethod startmethod;
     private String remarks;
 
     public Flight() { }
-    public Flight(int id, Plane plane, Pilot pilot, Pilot second_pilot, Date starttime, Date landtime, String airfield, Startmethod startmethod, String remarks) {
+    public Flight(int id, Plane plane, Pilot pilot, Pilot second_pilot, Instant starttime, Instant landtime, String airfield, Startmethod startmethod, String remarks) {
         this.id = id;
         this.plane = plane;
         this.pilot = pilot;
@@ -60,19 +58,19 @@ public class Flight {
         this.second_pilot = second_pilot;
     }
 
-    public Date getStarttime() {
+    public Instant getStarttime() {
         return starttime;
     }
 
-    public void setStarttime(Date starttime) {
+    public void setStarttime(Instant starttime) {
         this.starttime = starttime;
     }
 
-    public Date getLandtime() {
+    public Instant getLandtime() {
         return landtime;
     }
 
-    public void setLandtime(Date landtime) {
+    public void setLandtime(Instant landtime) {
         this.landtime = landtime;
     }
 

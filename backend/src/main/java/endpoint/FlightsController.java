@@ -2,10 +2,9 @@ package endpoint;
 
 import DAL_interfaces.Repositories.IFlightRepository;
 import Factory.FlightFactory;
-import domain.Flight;
+import domain.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;

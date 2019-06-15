@@ -17,8 +17,8 @@
         <many-to-one name="plane" column="plane" class="domain.Plane" not-null="true" lazy="false" />
         <many-to-one name="pilot" column="pilot" class="domain.Pilot" not-null="true" lazy="false" />
         <many-to-one name="second_pilot" column="second_pilot" class="domain.Pilot" not-null="false" lazy="false" />
-        <property name="starttime" column="starttime" type="date" />
-        <property name="landtime" column="landtime" type="date" />
+        <property name="starttime" column="starttime" />
+        <property name="landtime" column="landtime" />
         <property name="airfield" column="airfield" type="string" />
         <property name="startmethod" column="startmethod">
             <type name="org.hibernate.type.EnumType">
