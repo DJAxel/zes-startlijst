@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "domain.Flight" table = "flights">
+
+        <meta attribute = "class-description">
+            A representation of a flight with a glider and one or two pilots.
+        </meta>
+
+        <id name = "id" type = "int" column = "id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="plane" column="plane" class="domain.Plane" not-null="true" lazy="false" />
+        <many-to-one name="pilot" column="pilot" class="domain.Pilot" not-null="true" lazy="false" />
+        <many-to-one name="second_pilot" column="second_pilot" class="domain.Pilot" not-null="false" lazy="false" />
+        <property name="starttime" column="starttime" type="date" />
+        <property name="landtime" column="landtime" type="date" />
+        <property name="airfield" column="airfield" type="string" />
+        <property name="startmethod" column="startmethod">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">domain.Startmethod</param>
+            </type>
+        </property>
+        <property name="remarks" column="remarks" type="string" />
+
+    </class>
+</hibernate-mapping>
