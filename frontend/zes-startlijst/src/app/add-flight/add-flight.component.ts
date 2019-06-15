@@ -81,16 +81,16 @@ export class AddFlightComponent implements OnInit {
   }
 
   addFlight() {
-    let flight: Flight = new Flight(
-      this.plane,
-      this.pilot,
-      this.second_pilot,
-      this.getTimeFromString(this.starttimeValue),
-      null,
-      this.settingsService.getAirfield(),
-      this.startmethod,
-      this.remarks
-    );
+    let flight: Flight = new Flight({
+      plane: this.plane,
+      pilot: this.pilot,
+      second_pilot: this.second_pilot,
+      starttime: this.getTimeFromString(this.starttimeValue),
+      landtime: null,
+      airfield: this.settingsService.getAirfield(),
+      startmethod: this.startmethod,
+      remarks: this.remarks
+    });
 
     console.dir( flight );
   }

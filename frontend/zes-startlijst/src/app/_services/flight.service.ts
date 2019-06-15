@@ -5,7 +5,9 @@ import { Pilot } from '../_domain/pilot';
 import { Pilotstatus } from '../_domain/pilotstatus';
 import { Startmethod } from '../_domain/startmethod';
 
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +17,14 @@ export class FlightService {
   private flights: Flight[] = [];
 
   getAll(): Observable<Flight[]> {
-    return of(this.flights);
+    return this.http.get<Flight[]>('/api/flights/').pipe(
+      map(
+        (flights: Flight[]) => flights.map(flight => new Flight(flight))
+      )
+    );
   }
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.flights.push(
       new Flight(
         new Plane("PH-421", "Ka8", 1),
@@ -67,6 +73,5 @@ export class FlightService {
         ""
       )
     );
-    console.log( this.flights );
   }
 }
