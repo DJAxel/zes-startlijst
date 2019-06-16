@@ -6,6 +6,7 @@ import domain.User;
 import endpoint.viewmodels.outgoing.LoginResponse;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,9 +39,7 @@ public class AuthenticationController {
             throw new ServletException("Username not found.");
         }
 
-        String pwd = user.getPassword();
-
-        if (!password.equals(pwd)) {
+        if (!BCrypt.checkpw(password, user.getPassword())) {
             throw new ServletException("Invalid login. Please check your name and password.");
         }
 
