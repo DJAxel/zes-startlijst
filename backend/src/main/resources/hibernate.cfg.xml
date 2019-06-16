@@ -30,6 +30,7 @@
         <mapping resource = "Plane.hbm.xml"/>
         <mapping resource = "Pilot.hbm.xml"/>
         <mapping resource = "Flight.hbm.xml"/>
+        <mapping resource = "User.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>
