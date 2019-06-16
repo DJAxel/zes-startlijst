@@ -35,9 +35,6 @@ public class PlaneJpaContext implements IPlaneContext {
             planes = (ArrayList<Plane>) session.createQuery("FROM Plane").list();
             for (Iterator iterator = planes.iterator(); iterator.hasNext();){
                 Plane plane = (Plane) iterator.next();
-                System.out.print("Registration: " + plane.getRegistration());
-                System.out.print("  Type: " + plane.getType());
-                System.out.println("  Number of seats: " + plane.getSeats());
             }
             tx.commit();
         } catch (HibernateException e) {

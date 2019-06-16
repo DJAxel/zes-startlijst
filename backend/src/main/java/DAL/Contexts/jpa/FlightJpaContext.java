@@ -36,9 +36,6 @@ public class FlightJpaContext implements IFlightContext {
             flights = (ArrayList<Flight>) session.createQuery("FROM Flight").list();
             for (Iterator iterator = flights.iterator(); iterator.hasNext();){
                 Flight flight = (Flight) iterator.next();
-//                System.out.println("Plane: " + flight.getPlane().getRegistration());
-//                System.out.println("Pilot: " + flight.getPilot().getName());
-                System.out.println("Starttime: " + flight.getStarttime().toString());
             }
             tx.commit();
         } catch (HibernateException e) {

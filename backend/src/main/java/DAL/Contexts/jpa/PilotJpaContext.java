@@ -35,8 +35,6 @@ public class PilotJpaContext implements IPilotContext {
             pilots = (ArrayList<Pilot>) session.createQuery("FROM Pilot").list();
             for (Iterator iterator = pilots.iterator(); iterator.hasNext();){
                 Pilot pilot = (Pilot) iterator.next();
-                System.out.print("Name: " + pilot.getName());
-                System.out.print("  Status: " + pilot.getStatus());
             }
             tx.commit();
         } catch (HibernateException e) {
