@@ -32,7 +32,7 @@ export class FlightService {
     };
     console.log(httpHeaders);
     return this.http.post<Flight>('/api/flights/', flight, httpHeaders).pipe(
-      catchError(err => console.dir(err))
+      catchError(err => {console.dir(err); return null;})
     );
   }
 
