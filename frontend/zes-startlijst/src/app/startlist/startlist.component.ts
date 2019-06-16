@@ -19,8 +19,6 @@ export class StartlistComponent implements OnInit {
   constructor(private flightService: FlightService, private loginService: LoginService) { }
 
   ngOnInit() {
-    console.log(this.flightService);
-    console.log(this.loginService.getToken());
     this.flightService.getAll().subscribe(flights => this.flights = flights);
   }
 

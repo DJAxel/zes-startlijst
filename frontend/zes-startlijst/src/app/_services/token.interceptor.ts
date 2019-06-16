@@ -14,8 +14,6 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor( public loginService: LoginService ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    console.log( this.LoginService );
     
     request = request.clone({
       setHeaders: {
