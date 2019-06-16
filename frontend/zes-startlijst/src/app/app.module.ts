@@ -10,6 +10,10 @@ import { StartlistComponent } from './startlist/startlist.component';
 import { AddFlightComponent } from './add-flight/add-flight.component';
 import { AppRoutingModule } from './/app-routing.module';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './_services/token.interceptor';
+import { LoginService } from './_services/login.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +28,14 @@ import { AppRoutingModule } from './/app-routing.module';
     NgSelectModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+      deps: [LoginService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

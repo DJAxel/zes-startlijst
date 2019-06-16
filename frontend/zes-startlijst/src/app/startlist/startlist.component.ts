@@ -5,6 +5,7 @@ import { Plane } from '../_domain/plane';
 import { Startmethod } from '../_domain/startmethod';
 import { Pilotstatus } from '../_domain/pilotstatus';
 import { FlightService } from '../_services/flight.service';
+import { LoginService } from '../_services/login.service';
 
 @Component({
   selector: 'app-startlist',
@@ -15,9 +16,11 @@ export class StartlistComponent implements OnInit {
 
   flights: Flight[] = [];
 
-  constructor(private flightService: FlightService) { }
+  constructor(private flightService: FlightService, private loginService: LoginService) { }
 
   ngOnInit() {
+    console.log(this.flightService);
+    console.log(this.loginService.getToken());
     this.flightService.getAll().subscribe(flights => this.flights = flights);
   }
 

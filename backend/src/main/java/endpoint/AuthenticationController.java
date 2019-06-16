@@ -3,6 +3,7 @@ package endpoint;
 import DAL_interfaces.Repositories.IUserRepository;
 import Factory.UserFactory;
 import domain.User;
+import endpoint.viewmodels.outgoing.LoginResponse;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class AuthenticationController {
     private IUserRepository userRepository = UserFactory.getUserRepository();
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestBody User login) throws ServletException {
+    public LoginResponse login(@RequestBody User login) throws ServletException {
 
         String jwtToken = "";
 
@@ -46,6 +47,6 @@ public class AuthenticationController {
         jwtToken = Jwts.builder().setSubject(username).claim("roles", "user").setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, "F7VmkmD9yg2lT6BT7maj9rGiVSSfHqBN").compact();
 
-        return jwtToken;
+        return new LoginResponse(jwtToken);
     }
 }
