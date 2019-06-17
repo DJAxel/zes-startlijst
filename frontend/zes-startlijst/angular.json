@@ -50,7 +50,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "zes-startlijst:build"
+            "browserTarget": "zes-startlijst:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

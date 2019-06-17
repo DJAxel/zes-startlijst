@@ -1,0 +1,64 @@
+<a routerLink="/" class="close-btn">
+  &times;
+</a>
+
+<div class="container">
+  <h2>Nieuwe vlucht</h2>
+
+  <div>
+    <div class="form-group">
+      <label for="plane">Vliegtuig</label>
+      <ng-select
+        [items]="planes"
+        bindLabel="registration"
+        [(ngModel)]="plane"></ng-select>
+    </div>
+
+    <div class="form-group">
+      <label for="pilot">Piloot</label>
+      <ng-select
+        [items]="pilots"
+        bindLabel="name"
+        [(ngModel)]="pilot"></ng-select>
+    </div>
+
+    <div class="form-group" [style.opacity] = "isDoubleseaterSelected() ? 1 : 0.5">
+      <label for="second_pilot">Tweede inzittende</label>
+      <ng-select
+        [disabled]="!isDoubleseaterSelected()"
+        [items]="pilots"
+        bindLabel="name"
+        [(ngModel)]="second_pilot"></ng-select>
+    </div>
+
+    <div class="form-group">
+      <label for="starttime">Starttijd</label>
+      <div class="d-flex">
+        <input [(ngModel)]="starttimeValue" type="text" name="starttime" class="form-control" placeholder="hh:mm" style="flex-grow: 1;">
+        <span class="btn btn-secondary ml-2" (click)="setStarttimeNow()">NU</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="startmethodWinch" name="startmethod" class="custom-control-input" [(ngModel)]="startmethod" [checked]="startmethod==0" [value]="0">
+        <label class="custom-control-label" for="startmethodWinch">Lier</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="startmethodTow" name="startmethod" class="custom-control-input" [(ngModel)]="startmethod" [checked]="startmethod==1" [value]="1">
+        <label class="custom-control-label" for="startmethodTow">Sleep</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="startmethodSelf" name="startmethod" class="custom-control-input" [(ngModel)]="startmethod" [checked]="startmethod==2" [value]="2">
+        <label class="custom-control-label" for="startmethodSelf">Zelfstart</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="starttime">Opmerkingen</label>
+      <input type="text" class="form-control" id="remarks" [(ngModel)]="remarks">
+    </div>
+
+    <button class="btn btn-primary" (click)="addFlight()" [disabled]="!isEverythingFilledIn()">Opslaan</button>
+  </div>
+</div>

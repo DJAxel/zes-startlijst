@@ -1,22 +1,22 @@
 package DAL.Contexts.jpa;
 
-import DAL_interfaces.Contexts.IPilotContext;
-import domain.Pilot;
-import domain.Plane;
+import DAL_interfaces.Contexts.IFlightContext;
+import domain.Flight;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class PilotJpaContext implements IPilotContext {
+public class FlightJpaContext implements IFlightContext {
 
     private static SessionFactory factory;
 
-    public PilotJpaContext() {
+    public FlightJpaContext() {
         try {
             factory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
@@ -25,16 +25,17 @@ public class PilotJpaContext implements IPilotContext {
         }
     }
 
-    public ArrayList<Pilot> getAll() {
+    @Override
+    public ArrayList<Flight> getAll() {
         Session session = factory.openSession();
         Transaction tx = null;
-        ArrayList<Pilot> pilots = null;
+        ArrayList<Flight> flights = null;
 
         try {
             tx = session.beginTransaction();
-            pilots = (ArrayList<Pilot>) session.createQuery("FROM Pilot").list();
-            for (Iterator iterator = pilots.iterator(); iterator.hasNext();){
-                Pilot pilot = (Pilot) iterator.next();
+            flights = (ArrayList<Flight>) session.createQuery("FROM Flight").list();
+            for (Iterator iterator = flights.iterator(); iterator.hasNext();){
+                Flight flight = (Flight) iterator.next();
             }
             tx.commit();
         } catch (HibernateException e) {
@@ -43,7 +44,23 @@ public class PilotJpaContext implements IPilotContext {
         } finally {
             session.close();
         }
-        return pilots;
+
+        return flights;
     }
 
+    @Override
+    public Flight add(Flight flight) {
+        try {
+            Session session = factory.openSession();
+            session.beginTransaction();
+            session.persist(flight);
+            session.getTransaction().commit();
+            session.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return flight;
+    }
 }
