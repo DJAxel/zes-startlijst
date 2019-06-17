@@ -8,7 +8,7 @@ import DAL_interfaces.Repositories.IPilotRepository;
 public class PilotFactory {
 
     public static IPilotRepository getPilotRepository() {
-        return new PilotRepository( new PilotJpaContext() );
+        return new PilotRepository( new PilotTestContext() );
     }
 
 }
